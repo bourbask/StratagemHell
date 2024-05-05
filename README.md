@@ -17,6 +17,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 ## Combos
 
 ### Patriotic Administration Center
+
 1. Machine Gun: Down, Left, Down, Up, Right
 2. Anti-Material Rifle: Down, Left, Right, Up, Down
 3. Stalwart: Down, Left, Down, Up, Up, Left
@@ -28,6 +29,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 9. Spear: Down, Down, Up, Down, Down
 
 ### Orbital Cannons
+
 1. Orbital Gatling Barrage: Right, Down, Left, Up, Up
 2. Orbital Airburst Strike: Right, Right, Right
 3. Orbital 120MM HE Barrage: Right, Down, Left, Right, Down
@@ -37,6 +39,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 7. Orbital Railcannon Strike: Right, Up, Down, Down, Right
 
 ### Hangar
+
 1. Eagle Strafing Run: Up, Right, Right
 2. Eagle Airstrike: Up, Right, Down, Right
 3. Eagle Cluster Bomb: Up, Right, Down, Down, Right
@@ -47,6 +50,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 8. Eagle 500KG Bomb: Up, Right, Down, Down, Down
 
 ### Bridge
+
 1. Orbital Precision Strike: Right, Right, Up
 2. Orbital Gas Strike: Right, Right, Down, Right
 3. Orbital EMS Strike: Right, Right, Left, Down
@@ -56,6 +60,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 7. Tesla Tower: Down, Up, Right, Up, Left, Right
 
 ### Engineering Bay
+
 1. Anti-Personnel Minefield: Down, Left, Up, Right
 2. Supply Pack: Down, Left, Down, Up, Up, Down
 3. Grenade Launcher: Down, Left, Up, Left, Down
@@ -67,6 +72,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 9. Shield Generator Pack: Down, Up, Left, Right, Left, Right
 
 ### Robotic Workshop
+
 1. Machine Gun Sentry: Down, Up, Right, Right, Up
 2. Gatling Sentry: Down, Up, Right, Left
 3. Mortar Sentry: Down, Up, Right, Right, Down
