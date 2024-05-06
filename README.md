@@ -6,6 +6,14 @@ Stratagem Hell is a simple Pygame-based game where players must input a series o
 
 The game starts with a main menu inviting the player to start the game or quit. Once the game starts, a random combo is presented on the screen, along with a timer. The player must input the correct sequence of keys corresponding to the combo before the timer runs out. The keys used in the game are "z" (UP), "q" (LEFT), "s" (DOWN), and "d" (RIGHT). As the player progresses, the combos become more challenging and the time limit decreases. If the player inputs the correct combo within the time limit, they advance to the next level. If they fail to do so, the game ends and they have the option to retry, quit, or return to the main menu.
 
+## Requirements
+
+Install requirements with the following command :
+
+```shell
+pip install -r requirements.txt
+```
+
 ## How to play
 
 1. Clone the repository or download the source code files.
