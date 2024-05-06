@@ -9,7 +9,7 @@ The game starts with a main menu inviting the player to start the game or quit. 
 ## How to play
 
 1. Clone the repository or download the source code files.
-2. Make sure you have Python and Pygame installed on your system.
+2. Make sure you have Python, Pygame, Dotenv installed on your system.
 3. Run the game by executing the `main.py` file.
 4. Follow the on-screen instructions to navigate the main menu, start the game, and input the combos.
 5. Have fun challenging yourself with increasingly difficult combos!
