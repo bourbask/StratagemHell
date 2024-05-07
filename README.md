@@ -1,18 +1,46 @@
-# Stratagem Hell
+# Stratagem Hell - Work in Progress
 
 Stratagem Hell is a simple Pygame-based game where players must input a series of button combinations within a certain time limit. The game is inspired by the Helldivers 2 video game.
+
+## Features
+
+- Arcade-style gameplay reminiscent of classic 8-bit arcade games.
+- Dynamic difficulty scaling based on player performance.
+- High-score tracking to encourage replayability.
+- Intuitive controls and user interface for easy accessibility.
+
+## Controls
+
+- Use the arrow keys (Up, Down, Left, Right) to input the stratagem combos.
+- Press any key to start a game or navigate through menus.
+
+## Gameplay
+
+- Upon starting the game, players are presented with a scoreboard showing the top 5 high scores and the player's last score.
+- Players must press any key to start a game.
+- In the game screen, players must execute stratagem combos displayed on the screen within a limited time frame.
+- The game ends if the player fails to complete all combos before time runs out.
+- After the game ends, players can choose to retry, return to the main menu, or quit the game.
 
 ## How it works
 
 The game starts with a main menu inviting the player to start the game or quit. Once the game starts, a random combo is presented on the screen, along with a timer. The player must input the correct sequence of keys corresponding to the combo before the timer runs out. The keys used in the game are "z" (UP), "q" (LEFT), "s" (DOWN), and "d" (RIGHT). As the player progresses, the combos become more challenging and the time limit decreases. If the player inputs the correct combo within the time limit, they advance to the next level. If they fail to do so, the game ends and they have the option to retry, quit, or return to the main menu.
 
+## Requirements
+
+- Make sure to have python installed
+- Download requirements with the following command :
+
+  ```shell
+  pip install -r requirements.txt
+  ```
+
 ## How to play
 
 1. Clone the repository or download the source code files.
-2. Make sure you have Python, Pygame, Dotenv installed on your system.
-3. Run the game by executing the `main.py` file.
-4. Follow the on-screen instructions to navigate the main menu, start the game, and input the combos.
-5. Have fun challenging yourself with increasingly difficult combos!
+2. Run the game by executing the `main.py` file.
+3. Follow the on-screen instructions to navigate the main menu, start the game, and input the combos.
+4. Have fun challenging yourself with increasingly difficult combos!
 
 ## Combos
 
