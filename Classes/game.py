@@ -96,8 +96,6 @@ class Game:
     def handle_combo_input(self, key):
         if len(self.button_inputs) > 0 and key == KEY_CODES_DATA[self.button_inputs[0]]:
             self.button_inputs.pop(0)
-            print(self.button_inputs, self.input_colors)
-            self.input_colors.append(GREEN_COLOR)
             if len(self.button_inputs) == 0:
                 print("Combo complete!")
                 self.reset_inputs()
