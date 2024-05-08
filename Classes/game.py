@@ -19,7 +19,12 @@ with open('./Data/key_codes.json', 'r') as file:
 
 # Define color constants
 BLACK_COLOR = (0, 0, 0)
+WHITE_COLOR = (255, 255, 255)
 GREEN_COLOR = (0, 255, 0)
+
+# Define margins
+MARGIN_WIDTH = 50
+MARGIN_HEIGHT = 50
 
 class Game:
     def __init__(self, screen, font):
@@ -49,16 +54,10 @@ class Game:
         self.start_time = time.time()
         self.chrono_duration = LEVEL_SPEED['1']
         self.chrono_end = self.start_time + self.chrono_duration
-        self.draw_time_bar()
 
         while True:
-            self.screen.fill((255, 255, 255))
-            self.display_text("Press the following inputs:", 50, 50)
-            self.display_text(", ".join(self.button_inputs), 300, 200)
-            self.display_text("Stratagem: {}".format(self.stratagem_title), 50, 100)
-            self.display_text("Level: {}".format(1), 50, 150)
-            self.display_text("Time left: {:.2f}".format(self.chrono_end - time.time()), 50, 250)
-            self.display_text("Press M to toggle music", 50, 300)
+            self.screen.fill(WHITE_COLOR)
+            self.display_layout([MARGIN_WIDTH, MARGIN_HEIGHT])
 
             if not self.handle_time():
                 return False
@@ -68,23 +67,61 @@ class Game:
                     pygame.quit()
                     quit()
                 if event.type == pygame.KEYDOWN:
-                    print(len(self.button_inputs) > 0, event.key == KEY_CODES_DATA[self.button_inputs[0]])
-                    if len(self.button_inputs) > 0 and event.key == KEY_CODES_DATA[self.button_inputs[0]]:
-                        self.button_inputs.pop(0)
-                        print(self.button_inputs, self.input_colors)
-                        self.input_colors.append(GREEN_COLOR)
-                        if len(self.button_inputs) == 0:
-                            print("Combo complete!")
-                            self.reset_inputs()
-                            return True
-                    else:
-                        print("Wrong input!")
-                        self.reset_inputs()
-                        return False
+                    if not self.handle_combo_input(event.key):
+                        return False  # Return False if combo input is incorrect
+
+                    if not self.handle_general_keys(event.key):
+                        return False  # Return False if general key handling fails
 
             pygame.display.update()
 
-    def draw_time_bar(self):
+    def display_layout(self, margins):
+        self.display_general_controls(margins)
+        self.display_game_info([margins[0], margins[1] + 100])
+        self.display_combo_input([margins[0], margins[1] + 200])
+
+    def display_combo_input(self, position: [int, int]):
+        self.display_text("Press the following inputs:", position[0], position[1])
+        self.display_text(", ".join(self.button_inputs), position[0] + 150, position[1] + 50)
+
+    def display_general_controls(self, position: [int, int]):
+        self.display_text("Press P to resume game", position[0], position[1])
+        self.display_text("Press M to toggle music", position[0] + 300, position[1])
+        self.draw_time_bar(position)
+
+    def display_game_info(self, position: [int, int]):
+        self.display_text("Stratagem: {}".format(self.stratagem_title), position[0], position[1])
+        self.display_text("Level: {}".format(1), position[0], position[1] + 50)
+
+    def handle_combo_input(self, key):
+        if len(self.button_inputs) > 0 and key == KEY_CODES_DATA[self.button_inputs[0]]:
+            self.button_inputs.pop(0)
+            print(self.button_inputs, self.input_colors)
+            self.input_colors.append(GREEN_COLOR)
+            if len(self.button_inputs) == 0:
+                print("Combo complete!")
+                self.reset_inputs()
+                return True  # Combo input is correct
+        elif key in [pygame.K_z, pygame.K_q, pygame.K_s, pygame.K_d]:
+            # Wrong input for the combo
+            print("Wrong input!")
+            self.reset_inputs()
+            return False  # Combo input is incorrect
+
+        return True  # No relevant combo input event
+
+    def handle_general_keys(self, key):
+        if key == pygame.K_r:
+            # Resume game
+            return True
+        elif key == pygame.K_m:
+            # Mute/unmute music
+            return True
+        # Add more general key handling logic as needed
+
+        return True  # No relevant general key event
+
+    def draw_time_bar(self, position: [int, int]):
         # Calculate remaining time percentage
         remaining_time = max(self.chrono_end - time.time(), 0)
         percentage = remaining_time / self.chrono_duration
@@ -93,7 +130,7 @@ class Game:
         bar_width = int(self.bar_length * percentage)
 
         # Draw the time bar
-        pygame.draw.rect(self.screen, self.bar_color, (50, 350, bar_width, self.bar_height))
+        pygame.draw.rect(self.screen, self.bar_color, (position[0], position[1] + 350, bar_width, self.bar_height))
 
     def render_inputs(self):
         for i, (input_text, color) in enumerate(zip(self.button_inputs, self.input_colors)):
