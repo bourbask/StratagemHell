@@ -1,10 +1,12 @@
+import os
 import random
 
+from Config import ROOT_DIR
 from combo_generator import ComboGenerator
 
 class StratagemHandler:
     def __init__(self):
-        self.generator = ComboGenerator('./Data/combos.json')
+        self.generator = ComboGenerator(os.path.join(ROOT_DIR, 'Data/combos.json'))
         self.combos = []
         self.current_level = 1
         self.current_stratagem_index = 0

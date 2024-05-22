@@ -1,3 +1,4 @@
+import os
 import pygame
 import time
 import json
@@ -5,14 +6,14 @@ import random
 from Classes.end_screen import EndScreen
 # from scoreboard import Scoreboard
 from Classes.combo_generator import ComboGenerator
-from Config import SCREEN_WIDTH, WHITE_COLOR, BLACK_COLOR, MARGIN_WIDTH, MARGIN_HEIGHT
+from Config import SCREEN_WIDTH, WHITE_COLOR, BLACK_COLOR, MARGIN_WIDTH, MARGIN_HEIGHT, ROOT_DIR
 
 # Load level speed from JSON file
-with open('./Data/level_speed.json', 'r') as file:
+with open(os.path.join(ROOT_DIR, 'Data/level_speed.json'), 'r') as file:
     LEVEL_SPEED = json.load(file)
 
 # Load key codes from JSON file
-with open('./Data/key_codes.json', 'r') as file:
+with open(os.path.join(ROOT_DIR, 'Data/key_codes.json'), 'r') as file:
     KEY_CODES_DATA = json.load(file)
 
 class Game:
@@ -21,7 +22,7 @@ class Game:
         self.font = font
         # self.scoreboard = Scoreboard()
         self.end_screen = EndScreen(screen, font)
-        self.combo_generator = ComboGenerator('./Data/combos.json')
+        self.combo_generator = ComboGenerator(os.path.join(ROOT_DIR, 'Data/combos.json'))
         self.current_combo_index = 0
         self.combos = []
         self.start_time = None

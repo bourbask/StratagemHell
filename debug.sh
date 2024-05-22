@@ -19,7 +19,7 @@ kill_music() {
 
 # Define function to generate WAV music
 generate_music() {
-    python3 Tools/music_generator_hd2_theme.py
+    python3 App/Tools/music_generator_hd2_theme.py
 }
 
 # Parse command-line arguments

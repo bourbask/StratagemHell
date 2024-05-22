@@ -1,14 +1,16 @@
 import os
 import wave
 import math
-from dotenv import load_dotenv
+from configparser import ConfigParser
+from configparser import ExtendedInterpolation
 
-
-# Load environment variables from .env file
-load_dotenv()
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Access the environment variable
-MUSIC_BASEPATH = os.getenv("MUSIC_BASEPATH")
+config = ConfigParser(interpolation=ExtendedInterpolation())
+config.read(os.path.join(ROOT_DIR, "Config/config.ini"))
+
+MUSIC_BASEPATH = os.path.join(ROOT_DIR, config.get('paths', 'music_basepath'))
 
 def generate_music_wav_hd2_theme_progressive():
     # Define the mapping of notes to frequencies

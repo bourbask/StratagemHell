@@ -1,12 +1,20 @@
+import os
+from pathlib import Path
 from configparser import ConfigParser
 from configparser import ExtendedInterpolation
 
+CURRENT_DIR = Path(__file__)
+PROJECT_NAME = 'StratagemHell'
+ROOT_DIR = next(
+    p for p in CURRENT_DIR.parents if p.parts[-1] == PROJECT_NAME
+).__str__() + '/App'
+
 # Access the paths from the config file
 config = ConfigParser(interpolation=ExtendedInterpolation())
-config.read("./Config/config.ini")
+config.read(os.path.join(ROOT_DIR, "Config/config.ini"))
 
-MUSIC_BASEPATH = config.get('paths', 'music_basepath')
-SOUNDFONT_PATH = config.get('paths', 'soundfont_path')
+MUSIC_BASEPATH = os.path.join(ROOT_DIR, config.get('paths', 'music_basepath'))
+SOUNDFONT_PATH = os.path.join(ROOT_DIR, config.get('paths', 'soundfont_path'))
 
 SCREEN_WIDTH = int(config.get('screen', 'width'))
 SCREEN_HEIGHT = int(config.get('screen', 'height'))
