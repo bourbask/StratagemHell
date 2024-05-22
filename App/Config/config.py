@@ -5,9 +5,7 @@ from configparser import ExtendedInterpolation
 
 CURRENT_DIR = Path(__file__)
 PROJECT_NAME = 'StratagemHell'
-ROOT_DIR = next(
-    p for p in CURRENT_DIR.parents if p.parts[-1] == PROJECT_NAME
-).__str__() + '/App'
+ROOT_DIR = Path(__file__).parent.parent.__str__()
 
 # Access the paths from the config file
 config = ConfigParser(interpolation=ExtendedInterpolation())
