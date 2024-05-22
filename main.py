@@ -43,10 +43,10 @@ while running:
         if menu.wait_for_input():
             game_state = PLAYING
             # Start the game when transitioning to PLAYING state
-            game.start_game()  
+            game.start()  
 
     elif game_state == PLAYING:
-        if game.start_game():
+        if game.start():
             game_state = GAME_OVER
 
     elif game_state == GAME_OVER:
