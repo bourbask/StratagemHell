@@ -1,3 +1,4 @@
+import os
 import pygame
 
 from configparser import ConfigParser
@@ -8,17 +9,17 @@ from Classes.menu import Menu
 from Classes.end_screen import EndScreen
 from Classes.music_player import MusicPlayer
 
-from Config import MUSIC_BASEPATH, SOUNDFONT_PATH, SCREEN_WIDTH, SCREEN_HEIGHT
+from Config import MUSIC_BASEPATH, SOUNDFONT_PATH, SCREEN_WIDTH, SCREEN_HEIGHT, ROOT_DIR
 
 # Initialize Pygame
 pygame.init()
 
 # Set up the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Stratagem Hell")
+pygame.display.set_caption("STRATAGEMHELL")
 
 # Initialize font
-font = pygame.font.SysFont(None, 36)
+font = pygame.font.Font(os.path.join(ROOT_DIR, 'Fonts', 'DejaVuSans.ttf'), 25)
 
 # Create instances of the classes
 game = Game(screen, font)

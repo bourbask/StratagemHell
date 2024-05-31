@@ -16,10 +16,15 @@ with open(os.path.join(ROOT_DIR, 'Data/level_speed.json'), 'r') as file:
 with open(os.path.join(ROOT_DIR, 'Data/key_codes.json'), 'r') as file:
     KEY_CODES_DATA = json.load(file)
 
+# Load key icons from JSON file
+with open(os.path.join(ROOT_DIR, './Data/keys_icons.json'), 'r', encoding='utf-8') as file:
+    KEY_ICONS_DATA = json.load(file)
+
 class Game:
     def __init__(self, screen, font):
         self.screen = screen
         self.font = font
+        self.fontArrows = pygame.font.Font(os.path.join(ROOT_DIR, 'Fonts', 'DejaVuSans-Bold.ttf'), 36)
         # self.scoreboard = Scoreboard()
         self.end_screen = EndScreen(screen, font)
         self.combo_generator = ComboGenerator(os.path.join(ROOT_DIR, 'Data/combos.json'))
@@ -86,8 +91,11 @@ class Game:
 
     def display_combo_input(self, position):
         self.display_text("Press the following inputs:", position[0], position[1])
+        # current_combo = self.combos[self.current_combo_index]
+        # self.display_text(", ".join(current_combo['button_inputs']), position[0] + 150, position[1] + 50)
         current_combo = self.combos[self.current_combo_index]
-        self.display_text(", ".join(current_combo['button_inputs']), position[0] + 150, position[1] + 50)
+        icons = [KEY_ICONS_DATA[btn] for btn in current_combo['button_inputs']]
+        self.display_text(" ".join(icons), position[0] + 150, position[1] + 50, BLACK_COLOR, self.fontArrows)
 
     def display_general_controls(self, position):
         self.display_text("Press P to resume game", position[0], position[1])
@@ -143,6 +151,10 @@ class Game:
         else:
             return True
 
-    def display_text(self, text, x, y, color=BLACK_COLOR):
-        text_surface = self.font.render(text, True, color)
+    def display_text(self, text, x, y, color=BLACK_COLOR, font=None):
+        if font != None:
+            text_surface = font.render(text, True, color)
+        else:
+            text_surface = self.font.render(text, True, color)
+
         self.screen.blit(text_surface, (x, y))
