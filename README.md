@@ -34,6 +34,8 @@ The game starts with a main menu inviting the player to start the game or quit. 
   ```shell
   pip install -r requirements.txt
   ```
+- Download [Fluid Soundfont zip file](http://ftp.fr.debian.org/debian/pool/main/f/fluid-soundfont/) and get the GM .sf2 file in it.
+- Create a new Soundfont subfolder in the Config folder and move the GM .sf2 file there.
 
 ## How to play
 
