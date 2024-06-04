@@ -9,7 +9,7 @@ block_cipher = None
 if sys.platform == 'win32':
     base_path = os.path.abspath(os.path.join(os.getcwd(), '..'))
 else:
-    base_path = os.path.abspath(os.getcwd())
+    base_path = os.path.abspath(os.path.join(os.getcwd(), '..'))
 
 # Define paths for data and binary files
 datas = [
