@@ -1,2 +1,4 @@
 __pycache__/
 App/Config/Soundfont/FluidR3_GM.sf2
+build/
+dist/
